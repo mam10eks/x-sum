@@ -2,7 +2,6 @@ package com.empty_stack.x_sum;
 
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import org.junit.Assert;
@@ -50,7 +49,6 @@ public class SetUtilTest
 		Assert.assertEquals(expected, actual);
 	}
 	
-	/*
 	@Test
 	public void checkThatAllElementsOfThePowerSetOfOneAndTwoAreRetrieved()
 	{
@@ -64,5 +62,5 @@ public class SetUtilTest
 		Set<Set<Integer>> actual = SetUtil.createPowerSet(new HashSet<>(Arrays.asList(1,2)));
 		
 		Assert.assertEquals(expected, actual);
-	}*/
+	}
 }

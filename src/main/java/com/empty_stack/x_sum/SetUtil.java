@@ -1,7 +1,8 @@
 package com.empty_stack.x_sum;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -17,16 +18,36 @@ public class SetUtil
 				.mapToObj(i -> i)
 				.collect(Collectors.toSet());
 	}
-
-	public static <T> Set<Set<T>> createPowerSet(HashSet<T> set)
+	
+	public static <T> Set<Set<T>> createPowerSet(Set<T> set)
 	{
-		if(!set.isEmpty())
-		{
-			return (HashSet) new HashSet<Set<Integer>>(Arrays.asList(
-					new HashSet<Integer>(Arrays.asList(1)),
-					new HashSet<Integer>()));
-		}
+		return createPowerSet(new ArrayList<>(set));
+	}
+
+	public static <T> Set<Set<T>> createPowerSet(List<T> set)
+	{
+		Set<Set<T>> ret = new HashSet<>();
 		
-		return new HashSet<>();
+		for(int i=0; i< (set.size()<<1); i++)
+		{
+			Set<T> currentSet = new HashSet<>();
+			
+			for(int j=0; j<set.size(); j++)
+			{
+				if(nthBitIsSet(i, j))
+				{
+					currentSet.add(set.get(j));
+				}
+			}
+			
+			ret.add(currentSet);
+		}
+
+		return ret;
+	}
+	
+	private static boolean nthBitIsSet(int i, int bit)
+	{
+		return ((i & (1 << bit)) != 0);
 	}
 }
