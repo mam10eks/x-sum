@@ -31,6 +31,7 @@ public class SetUtilTest
 	public void checkThatThePowerSetOfTheEmptySetIsEmpty()
 	{
 		Set<Set<Integer>> expected = new HashSet<>();
+		expected.add(new HashSet<>());
 		Set<Set<Integer>> actual = SetUtil.createPowerSet(new HashSet<>());
 		
 		Assert.assertEquals(expected, actual);
@@ -60,6 +61,25 @@ public class SetUtilTest
 		));
 		
 		Set<Set<Integer>> actual = SetUtil.createPowerSet(new HashSet<>(Arrays.asList(1,2)));
+		
+		Assert.assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void checkThatAllEmentsOfAPowerSetWithThreElementsAreRetrieved()
+	{
+		Set<Set<Integer>> expected = new HashSet<>(Arrays.asList(
+				new HashSet<>(Arrays.asList(3,6,8)),
+				new HashSet<>(Arrays.asList(3, 6)),
+				new HashSet<>(Arrays.asList(3, 8)),
+				new HashSet<>(Arrays.asList(6, 8)),
+				new HashSet<>(Arrays.asList(3)),
+				new HashSet<>(Arrays.asList(6)),
+				new HashSet<>(Arrays.asList(8)),
+				new HashSet<>()
+			));
+		
+		Set<Set<Integer>> actual = SetUtil.createPowerSet(new HashSet<>(Arrays.asList(3,6,8)));
 		
 		Assert.assertEquals(expected, actual);
 	}

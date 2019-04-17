@@ -28,7 +28,7 @@ public class SetUtil
 	{
 		Set<Set<T>> ret = new HashSet<>();
 		
-		for(int permutation=0; permutation<(set.size()<<1); permutation++)
+		for(int permutation=0; permutation<((set.size()+1)<<1); permutation++)
 		{
 			ret.add(subsetFromPermutationInteger(permutation, set));
 		}
