@@ -28,22 +28,20 @@ public class SetUtil
 	{
 		Set<Set<T>> ret = new HashSet<>();
 		
-		for(int i=0; i< (set.size()<<1); i++)
+		for(int permutation=0; permutation<(set.size()<<1); permutation++)
 		{
-			Set<T> currentSet = new HashSet<>();
-			
-			for(int j=0; j<set.size(); j++)
-			{
-				if(nthBitIsSet(i, j))
-				{
-					currentSet.add(set.get(j));
-				}
-			}
-			
-			ret.add(currentSet);
+			ret.add(subsetFromPermutationInteger(permutation, set));
 		}
 
 		return ret;
+	}
+	
+	private static <T> Set<T> subsetFromPermutationInteger(int permutation, List<T> set)
+	{
+		return IntStream.range(0, set.size())
+			.filter(i -> nthBitIsSet(permutation, i))
+			.mapToObj(i -> set.get(i))
+			.collect(Collectors.toSet());
 	}
 	
 	private static boolean nthBitIsSet(int i, int bit)
