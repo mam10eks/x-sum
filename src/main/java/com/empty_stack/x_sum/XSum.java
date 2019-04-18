@@ -1,6 +1,5 @@
 package com.empty_stack.x_sum;
 
-import java.util.HashSet;
 import java.util.Set;
 
 import lombok.Data;
@@ -12,7 +11,7 @@ public class XSum
 	
 	private final int targetSum;
 
-	public int xsum(HashSet<Integer> set)
+	public int xsum(Set<Integer> set)
 	{
 		int ret = 0;
 		
@@ -26,7 +25,8 @@ public class XSum
 
 	private boolean isSolution(Set<Integer> set)
 	{
-		return set != null && set.size() == targetNumberOfElements
-				&& set.stream().mapToInt(i -> i).sum() == targetSum;
+		return set != null
+			&& set.size() == targetNumberOfElements
+			&& set.stream().mapToInt(i -> i).sum() == targetSum;
 	}
 }

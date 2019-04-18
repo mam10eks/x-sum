@@ -18,6 +18,15 @@ public class XSumTest
 	}
 	
 	@Test
+	public void checkThatTheSubsetOfSizeZeroWhichSumsToZeroIsAValidSolutionForTheAssociatedProblemDefinition()
+	{
+		int expected = 1;
+		int actual = new XSum(0, 0).xsum(new HashSet<>(Arrays.asList(2,3)));
+		
+		Assert.assertEquals(expected, actual);
+	}
+	
+	@Test
 	public void checkThatInputWithoutMatchingSumReturns0()
 	{
 		int expected = 0;
@@ -41,6 +50,15 @@ public class XSumTest
 		int expected = 2;
 		int actual = new XSum(2, 7).xsum(new HashSet<>(Arrays.asList(3,4,5,2)));
 		
+		Assert.assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void checkThatInputWithSingleMatchingElementReturns1()
+	{
+		int expected = 1;
+		int actual = new XSum(2, 6).xsum(new HashSet<>(Arrays.asList(1, 2, 3, 4)));
+
 		Assert.assertEquals(expected, actual);
 	}
 }

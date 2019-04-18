@@ -28,7 +28,7 @@ public class SetUtil
 	{
 		Set<Set<T>> ret = new HashSet<>();
 		
-		for(int permutation=0; permutation<((set.size()+1)<<1); permutation++)
+		for(int permutation=0; permutation<(1<<set.size()); permutation++)
 		{
 			ret.add(subsetFromPermutationInteger(permutation, set));
 		}
@@ -46,6 +46,6 @@ public class SetUtil
 	
 	private static boolean nthBitIsSet(int i, int bit)
 	{
-		return ((i & (1 << bit)) != 0);
+		return ((i & (1 << bit)) > 0);
 	}
 }
